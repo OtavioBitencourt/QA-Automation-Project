@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "1c57b8c1-6ca8-42e0-8960-e39b46f325b2",
+    "name": "QA Automation - API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57496507",
+    "_collection_link": "https://go.postman.co/collection/57496507-1c57b8c1-6ca8-42e0-8960-e39b46f325b2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "CT-API-01 - Criar usuário com dados válidos",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code deve ser 201\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Nome do usuário deve ser Otávio QA\", function () {\r",
+              "    const response = pm.response.json();\r",
+              "\r",
+              "    pm.expect(response.name).to.eql(\"Otavio QA\")\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Resposta deve possuir um ID\", function() {\r",
+              "    const response = pm.response.json();\r",
+              "\r",
+              "    pm.expect(response.id).to.exist;\r",
+              "})\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Otavioqa\",\r\n    \"username\": \"otavioqa\",\r\n    \"email\": \"otavio@example.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/users",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CT-API-02 - Consultar usuários",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status da resposta deve ser 200\", function() {\r",
+              "   pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Numero de usuário deve ser igual a 10\", function() {\r",
+              "    const response = pm.response.json();\r",
+              "\r",
+              "    pm.expect(response.length).to.eql(10);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Usuarios possuem campos obrigatorios\", function() {\r",
+              "    const response = pm.response.json();\r",
+              "\r",
+              "    response.forEach(user =>{\r",
+              "        pm.expect(user).to.have.property('id');\r",
+              "        pm.expect(user).to.have.property('name');\r",
+              "        pm.expect(user).to.have.property('username');\r",
+              "        pm.expect(user).to.have.property('email');\r",
+              "    });\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/users",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
