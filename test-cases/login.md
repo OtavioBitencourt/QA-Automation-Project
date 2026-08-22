@@ -167,5 +167,4 @@ Passos:
 2. Clicar no botão "Login". 
 
 Resultado esperado: 
-O sistema deve impedir a autenticação, permanecer na página de login e apresentar uma mensagem informando que o usuário é obrigatório.
-
+O sistema deve impedir a autenticação, permanecer na página de login e apresentar uma mensagem informando que é necessário informar usuário e senha. 
