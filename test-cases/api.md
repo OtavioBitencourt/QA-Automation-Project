@@ -60,3 +60,60 @@ A resposta deve conter:
 • Status code: `201`.
 • Nome retornado corretamente.
 • ID gerado pela API.
+
+
+------------------------------------------------------------------------
+
+## CT-API-02 - Consultar usuários
+
+### Objetivo
+
+Validar se a API retorna corretamente a lista de usuários.
+
+### Método
+
+GET
+
+### Endpoint
+
+`https://jsonplaceholder.typicode.com/users`
+
+### Pré-condição
+
+A API deve estar disponível.
+
+### Passos
+
+1. Criar uma requisição utilizando o método GET.
+2. Informar o endpoint `/users`.
+3. Enviar a requisição.
+4. Validar o status code retornado.
+5. Validar a quantidade de usuários retornados.
+6. Validar a presença dos campos obrigatórios nos usuários.
+
+### Resultado esperado
+
+A API deve retornar o status code `200 OK`.
+
+A resposta deve conter 10 usuários.
+
+Cada usuário deve possuir os campos:
+
+- `id`
+- `name`
+- `username`
+- `email`
+
+### Validações automatizadas
+
+- Status code deve ser `200`.
+- A quantidade de usuários deve ser igual a `10`.
+- Todos os usuários devem possuir os campos obrigatórios.
+
+### Resultado obtido
+
+**PASS**
+
+- Status code: `200`.
+- 10 usuários retornados.
+- Todos os usuários possuem os campos obrigatórios.
